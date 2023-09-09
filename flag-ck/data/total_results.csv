@@ -1,0 +1,4 @@
+structure,params,stream,avg heavy_match,avg jaccard_i,avg minimal_l,flags_raised
+ck,1024x4,novel,22.0,1.0,22.0,0.0,0.01
+ck,1024x4,kosarak,20.0,1.0,20.0,0.0,0.0
+ck,1024x4,retail,22.0,1.0,22.0,7.026861219593415e-05,0.02

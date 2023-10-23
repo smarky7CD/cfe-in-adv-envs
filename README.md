@@ -4,7 +4,15 @@ This repository contains implementation code and experimental artifacts related 
 
 The accompanying full paper text is available in `/paper/` (updated 2023-09-25). It is also available on [ePrint](https://eprint.iacr.org/2023/1366).
 
-The conference proceedings version of the paper will appear at [ACM CCS '23](https://www.sigsac.org/ccs/CCS2023/).
+The conference proceedings version of the paper will appear at [ACM CCS '23](https://www.sigsac.org/ccs/CCS2023/). The ACM Reference format for our paper is below.
+
+```
+Sam A. Markelon, Mia Filić, and Thomas Shrimpton. 2023. 
+Compact Frequency Estimators in Adversarial Environments. 
+In Proceedings of the 2023 ACM SIGSAC Conference on Computer and Communications Security (CCS ’23), November 26–30, 2023, Copenhagen, Denmark. 
+ACM, New York, NY, USA, 15 pages. https://doi.org/10.1145/3576915.3623216
+```
+
 
 ## Reference Implementation
 

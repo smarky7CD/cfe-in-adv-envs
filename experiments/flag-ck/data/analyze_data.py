@@ -157,18 +157,20 @@ def main():
 
             with open(full_sub_dir + f"/results.csv", 'w') as wf:
                 wf.write("trial,heavy_match,jaccard_i,minimal_l,percent_error,flags_raised\n")
+                """
                 print("trial,heavy_match,jaccard_i,minimal_l,percent_error,flags_raised")
                 for i in range(100):
                     wf.write(f"{i+1},{heavy_match[i]},{jaccard_i[i]},{minimal_l[i]},{percent_err[i]},{flags_raised[i]}\n")
                     print(f"{i+1},{heavy_match[i]},{jaccard_i[i]},{minimal_l[i]},{percent_err[i]},{flags_raised[i]}")
                 wf.write(f"tot,{sum(heavy_match)/100},{sum(jaccard_i)/100},{sum(minimal_l)/100},{sum(percent_err)/100},{sum(flags_raised)/100}\n")
                 print(f"tot,{sum(heavy_match)/100},{sum(jaccard_i)/100},{sum(minimal_l)/100},{sum(percent_err)/100},{sum(flags_raised)/100}\n\n")
+                """
                 print(f"\n\nTotal Flags Raised...{stream} : {sum(flags_raised)}")
 
 def get_tot_data():
     wf = open("total_results.csv", 'w') 
     wf.write("structure,params,stream,avg heavy_match,avg jaccard_i,avg minimal_l,flags_raised\n")
-    print("structure,params,stream,avg heavy_match,avg jaccard_i,avg minimal_l,flags_raised")
+    #print("structure,params,stream,avg heavy_match,avg jaccard_i,avg minimal_l,flags_raised")
     rootdir = os.getcwd()
     for sub_dir in os.listdir(rootdir):
         full_sub_dir = os.path.join(rootdir, sub_dir)
@@ -180,7 +182,7 @@ def get_tot_data():
             stats = tot_line.split(',')
             hm,ji,ml,pe,fr = stats[1], stats[2], stats[3],stats[4],stats[5]
             wf.write(f"{structure},{params},{stream},{hm},{ji},{ml},{pe},{fr}\n")
-            print(f"{structure},{params},{stream},{hm},{ji},{ml},{pe},{fr}")
+            #print(f"{structure},{params},{stream},{hm},{ji},{ml},{pe},{fr}")
     wf.close()
 
                         
@@ -195,7 +197,7 @@ if __name__ == "__main__":
     print("\n\n")
     """
 
-    #write_all_est_files()
+    write_all_est_files()
     
     main()
-    #get_tot_data()
+    get_tot_data()

@@ -1,5 +1,7 @@
 import os
 
+TRIALS = 50
+
 def get_HEAVY(stream_file, stream_name, k):
     with open(stream_file, 'r') as f:
         lines = [line.rstrip() for line in f]
@@ -59,7 +61,7 @@ def write_all_est_files():
         if os.path.isdir(full_sub_dir):
             structure, params, stream = get_exp_info(sub_dir)
             print(f"{structure} {params} {stream}")
-            for trial in range(1000):
+            for trial in range(TRIALS):
                 with open(full_sub_dir + f"/{trial}.csv"):
                     est_freq_list,_ = get_est_freqs(full_sub_dir + f"/{trial}.csv")
                     write_est_file(full_sub_dir + f"/{trial}_est_freqs.csv",est_freq_list)
@@ -93,7 +95,7 @@ def main():
             minimal_l = []
             percent_err = []
             
-            for trial in range(1000):
+            for trial in range(TRIALS):
                 
                 hm = 0
                 ji = 0
@@ -152,16 +154,16 @@ def main():
             with open(full_sub_dir + f"/results.csv", 'w') as wf:
                 wf.write("trial,heavy_match,jaccard_i,minimal_l,percent_error\n")
                 print("trial,heavy_match,jaccard_i,minimal_l,percent_error")
-                for i in range(1000):
+                for i in range(TRIALS):
                     wf.write(f"{i+1},{heavy_match[i]},{jaccard_i[i]},{minimal_l[i]},{percent_err[i]}\n")
                     print(f"{i+1},{heavy_match[i]},{jaccard_i[i]},{minimal_l[i]},{percent_err[i]}")
-                wf.write(f"tot,{sum(heavy_match)/1000},{sum(jaccard_i)/1000},{sum(minimal_l)/1000},{sum(percent_err)/1000}\n")
-                print(f"tot,{sum(heavy_match)/1000},{sum(jaccard_i)/1000},{sum(minimal_l)/1000},{sum(percent_err)/1000}\n\n")
+                wf.write(f"tot,{sum(heavy_match)/TRIALS},{sum(jaccard_i)/TRIALS},{sum(minimal_l)/TRIALS},{sum(percent_err)/TRIALS}\n")
+                print(f"tot,{sum(heavy_match)/TRIALS},{sum(jaccard_i)/TRIALS},{sum(minimal_l)/TRIALS},{sum(percent_err)/TRIALS}\n\n")
 
 def get_tot_data():
     wf = open("total_results.csv", 'w') 
-    wf.write("structure,params,stream,avg heavy_match,avg jaccard_i,avg minimal_l\n")
-    print("structure,params,stream,avg heavy_match,avg jaccard_i,avg minimal_l")
+    wf.write("structure,params,stream,avg heavy_match,avg jaccard_i,avg minimal_l,percent_err\n")
+    print("structure,params,stream,avg heavy_match,avg jaccard_i,avg minimal_l,percent_err")
     rootdir = os.getcwd()
     for sub_dir in os.listdir(rootdir):
         full_sub_dir = os.path.join(rootdir, sub_dir)

@@ -140,7 +140,7 @@ python3 attack_experiments.py
 
 The output of the below form.
 
-```
+```console
 Trial 0
 .
 .
@@ -168,7 +168,7 @@ python3 analyze_data.py
 
 A summary data file called `total_results.csv` in the `data` subdirectory will be produced with the same information as the honest setting experiments. The total flags raised over the 100 trials ran for each stream will be printed to `stdout` (which is the data we care about). The output is of the form below.
 
-```
+```console
 .
 .
 .

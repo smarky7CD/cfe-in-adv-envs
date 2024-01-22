@@ -3,6 +3,17 @@ sys.path.extend([f'./{name}' for name in os.listdir(".") if os.path.isdir(name)]
 
 from ck import CK
 
+
+structs = ["ck"] # ,"cms","hk"]
+streams = ["kosarak","retail","novel"]
+params = [["1024x4"]] #, ["512x4"], ["256x4","341x3","512x2"]]
+
+for i,struct in enumerate(structs):
+        for stream in streams:
+            for p in params[i]:
+                os.mkdir(f"./data/{struct}_{p}_{stream}")
+
+
 streams = {"retail" : [], "kosarak" : [], "novel" : []}
 
 with open('./streams/retail_stream.txt','r') as f:

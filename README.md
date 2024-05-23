@@ -23,11 +23,11 @@ There is a `test.c` file that explores how to use this reference implementation.
 
 ## Adversarial CFE Experiment Artifacts
 
-This directory contains artifacts used to produce the experimental results in the paper **Compact Frequency Estimators in Adversarial Environments**. All subdirectories in the `experiments` directory correspond to an experiment in a specific section or subsection in the paper. Each subdirectory is self-contained in that you can run the particular experiment as is from within the directory. The steps for running experiments and reproducing results are outlined below. The data produced from these experiments that appear as results in the paper are presented in summary form as `.csv` files or as inline comments in the source code in each directory. 
+This directory contains artifacts used to produce the experimental results in the paper **Compact Frequency Estimators in Adversarial Environments**. All subdirectories in the `experiments` directory correspond to an experiment in a specific section or subsection in the paper. Each subdirectory is self-contained, in that you can run the particular experiment as is from within the directory. The steps for running experiments and reproducing results are outlined below. The data produced from these experiments that appear as results in the paper are presented in summary form as `.csv` files or as inline comments in the source code in each directory. 
 
-The only requirement to run these experiments is to be able to run Python scripts from a terminal. We used Python 3.9.7, but in theory any Python version 3.6+ should suffice. The terminal commands we provide are in a *nix like syntax, but should also work in PowerShell if tested on Windows (with perhaps some slight syntactic differences). We provide an estimate the compute time for each experiment. We ran these experiments on an Apple M1 machine with 16GB of RAM. Compute times may vary slightly depending on hardware, but specialized or high performance computing machinery is not required. 
+The only requirement to run these experiments is to be able to run Python scripts from a terminal. We used Python 3.9.7, but in theory any Python version 3.6+ should suffice. The terminal commands we provide are in a *nix like syntax, but should also work in PowerShell if tested on Windows (with perhaps some slight syntactic differences). We provide an estimate of the compute time for each experiment. We ran these experiments on an Apple M1 machine with 16GB of RAM. Compute times may vary slightly depending on hardware, but specialized or high performance computing machinery is not required. 
 
-To install simply clone the GitHub repository and install the necessary dependencies using pip. This should take less than 5 minutes of human time (depending on internet speed.)
+To install, simply clone the GitHub repository and install the necessary dependencies using pip. This should take less than 5 minutes of human time (depending on internet speed.)
 
 ```console
 git clone https://github.com/smarky7CD/cfe-in-adv-envs.git
@@ -54,12 +54,11 @@ HK test qry is 1
 
 In addition, an image scatter plot should pop up on one's display to ensure the `numpy` and `matplotlib` are installed and functioning correctly. One can simply close the window after it appears. 
 
-
 ### CFE Implementations
 
 We present the source code of the Python 3 implementations of Count-Keeper (CK), Count-min Sketch (CMS), and HeavyKeeper (HK) in `/cfes`. The implementations are functionally one to one with their respective presentations in the paper (Figure 5, Figure 2, and Figure 3). The built-in Python `__init__` function acts as `REP` and all structures have a method called `qry(x)` and `up(x)` equivalent to their functional definitions in the paper. We also have a common `Hasher` class that is used across all structures for computing row position hash functions and to produce fingerprints of elements for CK and HK. The `Hasher` classes uses the BLAKE2b cryptographic hash function as described in Section 6.4 of our paper. 
 
-These implementations (or a slight modification of them to allow for added behaviors) are used in every experiment. Note that these implementations are not tuned for performance, but rather ease of collecting data concerning correctness and behavior under adversarial conditions of these structures.
+These implementations (or a slight modification of them to allow for added experimental behaviors) are used in every experiment. Note, that these implementations are not tuned for performance, but rather ease of collecting data concerning correctness and behavior under adversarial conditions of these structures.
 
 
 ### Streams
